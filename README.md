@@ -2,7 +2,7 @@
 
 # Awesome Books: Webpack Setup
 
-> I create the set up webpack
+> I create the To do list Using Webpack
 
 
 ## Getting Started
