@@ -1,50 +1,51 @@
 
-
-.stylelogos{
-    width: 20px;
-    height: 20px;
+.stylelogos {
+  width: 20px;
+  height: 20px;
 }
 
-#todoaddlist{
-    width: 100%;
-    border: none;
+#todoaddlist {
+  width: 100%;
+  border: none;
 }
 
-form{
+form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #888;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+h1 {
+  margin: 0;
+}
+
+.itemtask {
+  display: flex;
+  justify-content: space-between;
+}
+
+.constructor {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px 8px #888;
+
+  .tyletittle {
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    justify-content: space-between;
-    border: 1px solid #888888;
-}
+    border: 1px solid #888;
+  }
 
-ul{
-    list-style: none;
-    padding: 0;
-}
-
-h1{
-    margin: 0px;
-}
-
-.itemtask{
-    display: flex;
-    justify-content: space-between;
-}
-.constructor{
-    display: flex;
-    flex-direction: column;
-    border: 1px solid;
-    padding: 10px;
-    box-shadow: 5px 10px 8px #888888;
-    .tyletittle{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        border: 1px solid #888888;
-    }
-    #listtask{
-        border: 1px solid #888888;
-    }
-
+  #listtask {
+    border: 1px solid #888;
+  }
 }
