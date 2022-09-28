@@ -1,7 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable prefer-destructuring */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable guard-for-in */
 import './styles.scss';
 import './refresh.png';
 import './enter.png';
