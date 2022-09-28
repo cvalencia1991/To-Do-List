@@ -1,32 +1,45 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-module.exports = {
-  entry: './src/index.js',
-  output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
-    clean: true,
-  },
-  devServer: {
-    static: './dist',
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'Output Management',
-      template: './src/index.html',
-    }),
-  ],
-  mode: 'development',
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
-      },
+module.exports= {
+    mode: 'development',
+    entry: './src/index.js',
+    output: {
+        filename: '[name].js',
+        path: path.resolve(__dirname,'./dist'),
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './src/index.html',
+        }),
     ],
-  },
-/*   optimization: {
-    runtimeChunk: 'single',
-  }, */
-};
+    module: {
+        rules: [
+          {
+            test: /\.s[ac]ss$/i,
+            use: ['style-loader', 'css-loader',"sass-loader"],
+          },
+           {
+            test: /\.(png|svg|jpg|jpeg|gif)$/i,
+            type: 'asset/resource',
+           use: [
+            {
+                loader: 'file-loader',
+                options:{
+                 name: '[name].[ext]',
+                 output: 'imgs/',
+                 useRelativePath: true,
+                }
+            }
+           ]
+        }
+        ],
+      },
+      devServer: {
+        static: './dist',
+        port: 8020,
+      },
+      optimization: {
+        runtimeChunk: 'single',
+      },
+
+}

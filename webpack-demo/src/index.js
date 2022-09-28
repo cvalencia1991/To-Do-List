@@ -1,14 +1,47 @@
+import "./styles.scss";
+import "./refresh.png";
+import "./enter.png";
+import "./menu.png";
 
-import _ from 'lodash';
-import './style.css';
+const task = [
+    {
+        description:'wash the dishes',
+        completed: false,
+        index:'1',
+    },
+    {
+        description:'wash the dishes',
+        completed : false,
+        index:'2',
+    },
+    {
+        description:'wash the dishes',
+        completed : false,
+        index:'3',
+    }
 
-function component() {
-    const element = document.createElement('div');
-  
-    // Lodash, now imported by this script
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  
-    return element;
-  }
-  
-  document.body.appendChild(component());
+];
+
+let listask = () =>{
+    for(const taska in task){
+        const description = task[taska].description;
+        const completed = task[taska].completed;
+        const index = task[taska].index;
+        const listask = document.getElementById('listtask');
+        const addtask = document.createElement('div');
+        addtask.innerHTML =`
+        <li  class="itemtask" id='list -${index}'>
+        <div>
+            <input type="checkbox" id="cbox1" value="first_checkbox" aria-label="alfa">
+            <span>${description}</span>
+        </div>
+            <div class = "space">
+            <img class="stylelogos" src="./menu.png" alt="">
+        </div>
+        </li>
+        `;
+        listask.appendChild(addtask);
+    }
+}
+listask();
+
