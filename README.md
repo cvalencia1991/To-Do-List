@@ -17,6 +17,7 @@ To get a local copy up and running follow these simple example steps.
     - `npm install --save-dev html-webpack-plugin`
     - `npm install --save-dev style-loader css-loader`
  
+ - to run it press the next item `npm start`
  - Enjoy :)
 
 
