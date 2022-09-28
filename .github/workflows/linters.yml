@@ -1,6 +1,6 @@
 {
   "connector": {
-    "name": "local",
+    "name": "src",
     "options": {
       "pattern": ["**", "!.git/**", "!node_modules/**"]
     }
