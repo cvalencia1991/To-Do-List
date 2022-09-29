@@ -1,8 +1,7 @@
 import './styles.scss';
-import './refresh.png';
-import './enter.png';
-import './menu.png';
-
+import './imgs/enter.png';
+import './imgs/menu.png';
+import './imgs/refresh.png';
 const task = [
   {
     description: 'wash the dishes',
@@ -30,6 +29,6 @@ listask.innerHTML = task.map((task) => `<li  class="itemtask" id='list -${task.i
     <span>${task.description}</span>
 </div>
     <div class = "space">
-    <img class="stylelogos" src="./menu.png" alt="">
+    <img class="stylelogos" src="./imgs/menu.png" alt="">
 </div>
 </li>`).join('');
