@@ -2,8 +2,7 @@ import './styles.scss';
 import './imgs/enter.png';
 import './imgs/menu.png';
 import './imgs/refresh.png';
-
-const LIST = []; let id = 0;
+import Task from './constructor.js';
 
 document.getElementById('clearall').addEventListener('click', () => {
   localStorage.clear();
@@ -14,20 +13,20 @@ const uncheck = '';
 const listtask = document.getElementById('listtask');
 
 class Methods {
-  createElement = (description, id, completed) => {
-    const complete = completed ? check : uncheck;
+  createelement(taskinfo) {
+    const complete = taskinfo.complete ? check : uncheck;
     listtask.style.border = '1px solid #888';
     const text = `
             <li class="itemtask" id='list'>
               <div class="stylelistitems">
                 <input id="tast"  class="checkbox" type="checkbox"  job="complete" aria-label="alfa" ${complete}>
-                <p>${description}</p>
+                <p>${taskinfo.description}</p>
               </div>
               <div class = "space">
-               <img name='deletetask' id="${id}" class="stylelogos" job="delete" src="./imgs/menu.png" alt="">
+               <img name='deletetask' id="${taskinfo.id}" class="stylelogos" job="delete" src="./imgs/menu.png" alt="">
               </div>
             </li>`;
-    listtask.insertAdjacentHTML('beforeend', text);
+    listtask.insertAdjacentHTML('afterbegin', text);
     this.resetform();
   }
 
@@ -42,24 +41,30 @@ class Methods {
   }
 }
 
-const ui = new Methods();
-
 const enter = document.getElementById('enter');
+
 enter.addEventListener('click', (event) => {
   event.preventDefault();
   const description = document.getElementById('listtext').value;
-  if (description) {
-    ui.createElement(description, id, false);
-    LIST.push({
-      name: description,
-      id,
-      completed: false,
-    });
-    id += 1;
+  const id = 0;
+  const taskinfo = new Task(description, id, false);
+  const ui = new Methods();
+  ui.createelement(taskinfo);
+
+  if (localStorage.getItem('tasks') == null) {
+    const tasks = [];
+    tasks.push(taskinfo);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  } else {
+    const Arr = JSON.parse(localStorage.getItem('tasks')) || [];
+    const counter = Arr.length;
+    const newinfo = new Task(taskinfo.description, counter);
+    Arr.push(newinfo);
+    localStorage.setItem('tasks', JSON.stringify(Arr));
   }
 });
 
-const completetoDo = (element) => {
+/* const completetoDo = (element) => {
   element.classlist.toggle(check);
   element.classlist.toggle(uncheck);
   LIST[element.id].completed = !LIST[element.id].completed;
@@ -78,4 +83,4 @@ listtask.addEventListener('click', (event) => {
   } else if (elementJob === 'delete') {
     removetoDo(element);
   }
-});
+}); */
