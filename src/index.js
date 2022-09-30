@@ -3,12 +3,10 @@ import './imgs/enter.png';
 import './imgs/menu.png';
 import './imgs/refresh.png';
 
-let LIST = []; let id = 0;
-const data = localStorage.getItem('toDolist');
+const LIST = []; let id = 0;
 
 document.getElementById('clearall').addEventListener('click', () => {
   localStorage.clear();
-  /*  location.reload(); */
 });
 
 const check = 'checked';
@@ -46,21 +44,6 @@ class Methods {
 
 const ui = new Methods();
 
-const loadlist = (array) => {
-  array.forEach((item) => {
-    ui.createElement(item.description, item.id, item.completed);
-  });
-};
-
-if (data) {
-  LIST = JSON.parse(data);
-  id = LIST.length;
-  loadlist(LIST);
-} else {
-  LIST = [];
-  id = 0;
-}
-
 const enter = document.getElementById('enter');
 enter.addEventListener('click', (event) => {
   event.preventDefault();
@@ -73,7 +56,6 @@ enter.addEventListener('click', (event) => {
       completed: false,
     });
     id += 1;
-    localStorage.setItem('toDolist', JSON.stringify(LIST));
   }
 });
 
@@ -95,7 +77,5 @@ listtask.addEventListener('click', (event) => {
     completetoDo(element);
   } else if (elementJob === 'delete') {
     removetoDo(element);
-    localStorage.removeItem(element);
   }
-  localStorage.setItem('toDolist', JSON.stringify(LIST));
 });
