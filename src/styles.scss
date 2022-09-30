@@ -1,4 +1,13 @@
 
+
+.body{
+  position: inherit;
+  top: center;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+}
 .stylelogos {
   width: 20px;
   height: 20px;
@@ -7,6 +16,14 @@
 #todoaddlist {
   width: 100%;
   border: none;
+}
+#listtext{
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+p{
+  margin: 0%;
 }
 
 form {
@@ -28,9 +45,19 @@ h1 {
 .itemtask {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.stylelistitems{
+  display: flex;
+}
+#enter{
+  background: none;
+    border: none;
 }
 
 .constructor {
+  width: 40%;
   display: flex;
   flex-direction: column;
   border: 1px solid;
@@ -46,6 +73,6 @@ h1 {
   }
 
   #listtask {
-    border: 1px solid #888;
+    border: none;
   }
 }

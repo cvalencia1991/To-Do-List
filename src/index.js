@@ -2,33 +2,106 @@ import './styles.scss';
 import './imgs/enter.png';
 import './imgs/menu.png';
 import './imgs/refresh.png';
-const task = [
-  {
-    description: 'wash the dishes',
-    completed: false,
-    index: '1',
-  },
-  {
-    description: 'wash the dishes',
-    completed: false,
-    index: '2',
-  },
-  {
-    description: 'wash the dishes',
-    completed: false,
-    index: '3',
-  },
 
-];
+let LIST=[],id=0;
+let data = localStorage.getItem('toDolist');
 
-const listask = document.getElementById('listtask');
+document.getElementById('clearall').addEventListener("click",()=>{
+ localStorage.clear();
+ location.reload()
 
-listask.innerHTML = task.map((task) => `<li  class="itemtask" id='list -${task.index}'>
-<div>
-    <input type="checkbox" id="cbox1" value="first_checkbox" aria-label="alfa">
-    <span>${task.description}</span>
-</div>
-    <div class = "space">
-    <img class="stylelogos" src="./imgs/menu.png" alt="">
-</div>
-</li>`).join('');
+});
+
+const check = 'checked'
+const uncheck = '';
+const listtask = document.getElementById('listtask');
+
+class methods{
+
+  createElement = (description,id,completed)=> {
+
+    let complete = completed ? check : uncheck;
+    listtask.style.border = "1px solid #888"
+       const text =`
+            <li class="itemtask" id='list'>
+              <div class="stylelistitems">
+                <input id="${id}"  class="checkbox" type="checkbox" onclick="checker()" job="complete" aria-label="alfa" ${complete}>
+                <p>${description}</p>
+              </div>
+              <div class = "space">
+                <img name='deletetask' id="${id}" class="stylelogos" job="delete" src="./imgs/menu.png" alt="">
+              </div>
+            </li>`;
+   listtask.insertAdjacentHTML('beforeend',text);
+   this.resetform();
+  }
+  resetform =()=> {
+    document.getElementById('form').reset();
+  }
+  removelist = (text)=>{
+    if(text.name == 'deletetask'){
+      text.parentEelement.parentEelement.remove();
+    }
+  }
+}
+
+const UI= new methods();
+
+let loadlist =(array) => {
+  array.forEach(item => {
+    UI.createElement(item.description,item.id,item.completed);
+  });
+}
+
+if(data){
+  LIST = JSON.parse(data);
+  id=LIST.length;
+  loadlist(LIST)
+}else{
+  LIST = [];
+  id=0;
+}
+
+const enter = document.getElementById('enter');
+
+enter.addEventListener('click', (event) => {
+  event.preventDefault();
+  const description = document.getElementById('listtext').value;
+  if(description){
+    UI.createElement(description,id,false);
+    LIST.push({
+        name: description,
+        id: id,
+        completed:false,
+      }
+    );
+    id++;
+    localStorage.setItem("toDolist",JSON.stringify(LIST));
+  }
+
+});
+
+
+let completetoDo = (element) =>{
+  element.classlist.toggle(check);
+  element.classlist.toggle(uncheck);
+  LIST[element.id].completed = LIST[element.id].completed ? false:true;
+};
+
+let removetoDo = (element) => {
+   element.parentElement.parentElement.remove();
+  LIST[element.id].completed =true;
+
+};
+
+listtask.addEventListener("click",(event)=>{
+  const element = event.target;
+  const elementJob= element.attributes.job.value;
+  if(elementJob == "complete"){
+    completetoDo(element);
+  }else if(elementJob == "delete"){
+    removetoDo(element);
+    localStorage.removeItem(element);
+  }
+  localStorage.setItem("toDolist",JSON.stringify(LIST));
+});

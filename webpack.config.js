@@ -7,6 +7,7 @@ module.exports = {
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, './dist'),
+    clean: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -25,6 +26,12 @@ module.exports = {
     }),
   ],
   module: {
+ /*    loaders: [
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
+      },
+    ], */
     rules: [
       {
         test: /\.s[ac]ss$/i,
@@ -63,7 +70,7 @@ module.exports = {
   },
   devServer: {
     static: './dist',
-    port: 8020,
+    port: 8010,
   },
   optimization: {
     runtimeChunk: 'single',

@@ -10,14 +10,14 @@
     <div class="constructor">
         <div class="tyletittle">
             <h1>To do list</h1>
-            <img class="stylelogos" src="./imgs/refresh.png" alt="">
+            <img id="clear" class="stylelogos" src="./imgs/refresh.png" alt="">
         </div>
-        <form>
-            <input id="todoaddlist" type="text" name="text" placeholder="text">
-            <img class="stylelogos" src="./imgs/enter.png" alt="">
+        <form id="form" action="">
+            <input id="listtext" name="listtext" type="text" placeholder="text">
+            <button id="enter" input="submit" type="submit" aria-label="s" ><img  class="stylelogos" src="./imgs/enter.png" alt=""></button>
         </form>
         <ul id="listtask"></ul>
-    <button input="buton">clear All Completed</button>
+    <button id="clearall" input="buton">Clear All Completed</button>
     <div>
 </body>
 </html>
