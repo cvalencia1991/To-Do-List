@@ -2,7 +2,7 @@
 
 # Awesome Books: Webpack Setup
 
-> I create the To do list Using Webpack
+> in this project i create a interactive TO-Do-list configuration
 
 
 ## Getting Started
