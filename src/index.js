@@ -25,11 +25,11 @@ class methods{
        const text =`
             <li class="itemtask" id='list'>
               <div class="stylelistitems">
-                <input id="${id}"  class="checkbox" type="checkbox" onclick="checker()" job="complete" aria-label="alfa" ${complete}>
+                <input id="tast"  class="checkbox" type="checkbox"  job="complete" aria-label="alfa" ${complete}>
                 <p>${description}</p>
               </div>
               <div class = "space">
-                <img name='deletetask' id="${id}" class="stylelogos" job="delete" src="./imgs/menu.png" alt="">
+               <img name='deletetask' id="${id}" class="stylelogos" job="delete" src="./imgs/menu.png" alt="">
               </div>
             </li>`;
    listtask.insertAdjacentHTML('beforeend',text);
@@ -63,7 +63,6 @@ if(data){
 }
 
 const enter = document.getElementById('enter');
-
 enter.addEventListener('click', (event) => {
   event.preventDefault();
   const description = document.getElementById('listtext').value;
@@ -105,3 +104,4 @@ listtask.addEventListener("click",(event)=>{
   }
   localStorage.setItem("toDolist",JSON.stringify(LIST));
 });
+
