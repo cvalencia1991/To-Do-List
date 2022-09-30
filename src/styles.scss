@@ -1,13 +1,12 @@
 
-
-.body{
+.body {
   position: inherit;
-  top: center;
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: space-around;
 }
+
 .stylelogos {
   width: 20px;
   height: 20px;
@@ -17,12 +16,14 @@
   width: 100%;
   border: none;
 }
-#listtext{
+
+#listtext {
   border: none;
   width: 100%;
   height: 100%;
 }
-p{
+
+p {
   margin: 0%;
 }
 
@@ -48,12 +49,13 @@ h1 {
   align-items: center;
 }
 
-.stylelistitems{
+.stylelistitems {
   display: flex;
 }
-#enter{
+
+#enter {
   background: none;
-    border: none;
+  border: none;
 }
 
 .constructor {

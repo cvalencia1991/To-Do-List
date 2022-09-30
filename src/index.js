@@ -3,26 +3,23 @@ import './imgs/enter.png';
 import './imgs/menu.png';
 import './imgs/refresh.png';
 
-let LIST=[],id=0;
-let data = localStorage.getItem('toDolist');
+let LIST = []; let id = 0;
+const data = localStorage.getItem('toDolist');
 
-document.getElementById('clearall').addEventListener("click",()=>{
- localStorage.clear();
- location.reload()
-
+document.getElementById('clearall').addEventListener('click', () => {
+  localStorage.clear();
+  /*  location.reload(); */
 });
 
-const check = 'checked'
+const check = 'checked';
 const uncheck = '';
 const listtask = document.getElementById('listtask');
 
-class methods{
-
-  createElement = (description,id,completed)=> {
-
-    let complete = completed ? check : uncheck;
-    listtask.style.border = "1px solid #888"
-       const text =`
+class Methods {
+  createElement = (description, id, completed) => {
+    const complete = completed ? check : uncheck;
+    listtask.style.border = '1px solid #888';
+    const text = `
             <li class="itemtask" id='list'>
               <div class="stylelistitems">
                 <input id="tast"  class="checkbox" type="checkbox"  job="complete" aria-label="alfa" ${complete}>
@@ -32,76 +29,73 @@ class methods{
                <img name='deletetask' id="${id}" class="stylelogos" job="delete" src="./imgs/menu.png" alt="">
               </div>
             </li>`;
-   listtask.insertAdjacentHTML('beforeend',text);
-   this.resetform();
+    listtask.insertAdjacentHTML('beforeend', text);
+    this.resetform();
   }
-  resetform =()=> {
+
+  resetform =() => {
     document.getElementById('form').reset();
   }
-  removelist = (text)=>{
-    if(text.name == 'deletetask'){
+
+  removelist = (text) => {
+    if (text.name === 'deletetask') {
       text.parentEelement.parentEelement.remove();
     }
   }
 }
 
-const UI= new methods();
+const ui = new Methods();
 
-let loadlist =(array) => {
-  array.forEach(item => {
-    UI.createElement(item.description,item.id,item.completed);
+const loadlist = (array) => {
+  array.forEach((item) => {
+    ui.createElement(item.description, item.id, item.completed);
   });
-}
+};
 
-if(data){
+if (data) {
   LIST = JSON.parse(data);
-  id=LIST.length;
-  loadlist(LIST)
-}else{
+  id = LIST.length;
+  loadlist(LIST);
+} else {
   LIST = [];
-  id=0;
+  id = 0;
 }
 
 const enter = document.getElementById('enter');
 enter.addEventListener('click', (event) => {
   event.preventDefault();
   const description = document.getElementById('listtext').value;
-  if(description){
-    UI.createElement(description,id,false);
+  if (description) {
+    ui.createElement(description, id, false);
     LIST.push({
-        name: description,
-        id: id,
-        completed:false,
-      }
-    );
-    id++;
-    localStorage.setItem("toDolist",JSON.stringify(LIST));
+      name: description,
+      id,
+      completed: false,
+    });
+    id += 1;
+    localStorage.setItem('toDolist', JSON.stringify(LIST));
   }
-
 });
 
-
-let completetoDo = (element) =>{
+const completetoDo = (element) => {
   element.classlist.toggle(check);
   element.classlist.toggle(uncheck);
-  LIST[element.id].completed = LIST[element.id].completed ? false:true;
+  LIST[element.id].completed = !LIST[element.id].completed;
 };
 
-let removetoDo = (element) => {
-   element.parentElement.parentElement.remove();
-  LIST[element.id].completed =true;
-
+const removetoDo = (element) => {
+  element.parentElement.parentElement.remove();
+  LIST[element.id].completed = true;
 };
 
-listtask.addEventListener("click",(event)=>{
+listtask.addEventListener('click', (event) => {
   const element = event.target;
-  const elementJob= element.attributes.job.value;
-  if(elementJob == "complete"){
+  const elementJob = element.attributes.job.value;
+  if (elementJob === 'complete') {
     completetoDo(element);
-  }else if(elementJob == "delete"){
+  } else if (elementJob === 'delete') {
     removetoDo(element);
     localStorage.removeItem(element);
   }
-  localStorage.setItem("toDolist",JSON.stringify(LIST));
+  localStorage.setItem('toDolist', JSON.stringify(LIST));
 });
-
