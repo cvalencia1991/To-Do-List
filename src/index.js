@@ -14,9 +14,8 @@ document.getElementById('clear').addEventListener('click', () => {
 const listtask = document.getElementById('listtask');
 
 listtask.addEventListener('click', (e) => {
-  const edit = e.target.name;
-  if (edit === 'deletetask') {
-    const Deleteid = parseInt(edit.getAttribute('id'));
+  if (e.target.name === 'deletetask') {
+    const Deleteid = parseInt(e.target.getAttribute('id'));
     const tasks = JSON.parse(localStorage.getItem('tasks'));
     const tasks2 = tasks.filter((task) => task.id !== Deleteid);
     localStorage.setItem('tasks', JSON.stringify(tasks2));
