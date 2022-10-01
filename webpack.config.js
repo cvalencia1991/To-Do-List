@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 module.exports = {
   mode: 'development',
   entry: './src/index.js',
@@ -12,13 +13,13 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      minify:{
-        removeComments:true,
-        collapseWhitespace:true,
-        removeRedundantAttributes:true,
-        removeScriptTypeAttributes:true,
-        removeStyleLinkTypeAttributes:true,
-        useShortDoctype:true,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true,
       },
     }),
     new MiniCssExtractPlugin({
@@ -26,19 +27,13 @@ module.exports = {
     }),
   ],
   module: {
- /*    loaders: [
-      {
-        test: /\.json$/,
-        loader: 'json-loader'
-      },
-    ], */
     rules: [
       {
         test: /\.s[ac]ss$/i,
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
-          'sass-loader'
+          'sass-loader',
         ],
       },
       {
