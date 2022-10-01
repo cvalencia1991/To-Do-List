@@ -7,6 +7,7 @@ import addtasklocalstorage from './modules/localstorage.js';
 
 document.getElementById('clear').addEventListener('click', () => {
   localStorage.clear();
+  location.reload();
 });
 
 document.addEventListener('DOMContentLoaded',(tasks)=>{
@@ -22,25 +23,34 @@ document.addEventListener('DOMContentLoaded',(tasks)=>{
 });
 
 listtask.addEventListener('click',(e)=>{
-
   if(e.target.name='deletetask'){
-   /*  tasks = localStorage.getItem('tasks'); */
-    const Deleteid = e.target.getAttribute('id');
-    console.log(Deleteid);
+    const Deleteid = parseInt(e.target.getAttribute('id'));
+    const tasks = JSON.parse(localStorage.getItem('tasks'));
+    const tasks2 = tasks.filter(task =>{ return task.id !== Deleteid} );
+    localStorage.setItem('tasks', JSON.stringify(tasks2));
+    const element =document.getElementById(`${Deleteid}`)
+    element.parentElement.parentElement.remove();
   }
+
 })
 class Methods {
   createelement(taskinfo) {
     const check = 'checked';
     const uncheck = '';
     const listtask = document.getElementById('listtask');
+    const tasks4 = JSON.parse(localStorage.getItem('tasks'));
+    if(tasks4 === null){
+      let  id = 0
+    }else{
+      tasks4.length + 1;
+    }
     const complete = taskinfo.complete ? check : uncheck;
     listtask.style.border = '1px solid #888';
     const text = `
             <li class="itemtask" id='list'>
               <div class="stylelistitems">
-                <input id="tast"  class="checkbox" type="checkbox"  job="complete" aria-label="alfa" ${complete}>
-                <p>${taskinfo.description}</p>
+                <input id ="tast"  class="checkbox" type="checkbox"  job="complete" aria-label="alfa" ${complete}>
+                <p alert id="edittask">${taskinfo.description}</p>
               </div>
               <div class = "space">
                <img name='deletetask' id="${taskinfo.id}" class="stylelogos" job="delete" src="./imgs/menu.png" alt="">
@@ -53,9 +63,10 @@ class Methods {
   resetform =() => {
     document.getElementById('form').reset();
   }
-  removelist = (text) => {
-  }
+
 }
+
+
 const enter = document.getElementById('enter');
 let counter ;
 enter.addEventListener('click', (event) => {
@@ -63,21 +74,31 @@ enter.addEventListener('click', (event) => {
   const description = document.getElementById('listtext').value;
   if(localStorage.getItem('tasks')== null){
     counter =0;
-    console.log(counter);
   }else{
    counter++;
-   console.log(counter);
   }
   const taskinfo = new Task(description, counter, false);
   const ui = new Methods();
   ui.createelement(taskinfo);
   addtasklocalstorage(taskinfo);
 
+
 });
 
+/* let edittask = document.getElementById('edittask')
 
-/* const algo = document.getElementsByName('deletetask');
-console.log(algo); */
+edittask.addEventListener('click',(e)=>{
+  alert('something');
+})
+
+
+ const edittask = document.getElementById('edittask');
+
+edittask.addEventListener('click',(e)=>{
+        console.log(e.target);
+})
+ const algo = document.getElementsByName('deletetask');
+console.log(algo);  */
 
 
 /* const completetoDo = (element) => {
@@ -100,32 +121,5 @@ listtask.addEventListener('click', (event) => {
     removetoDo(element);
   }
 });
-
 const hst = document.getElementById('listtask');
-
-const highScores = [
-  { id: '1', name: 'Maximillian', score: 1000 },
-  { id: '2', name: 'The second guy', score: 700 },
-  { id: '3', name: 'The newbie!', score: 50 },
-];
-
-localStorage.setItem('highscores', JSON.stringify(highScores));
-
-let retrievedScores = JSON.parse(localStorage.getItem('highscores'));
-
-const deleteById = function (self) {
-  retrievedScores = retrievedScores.filter((elem) => elem.id !== self.id);
-
-  localStorage.setItem('highscores', JSON.stringify(retrievedScores));
-  self.parentNode.parentNode.removeChild(self.parentNode);
-};
-
-for (let i = 0; i < retrievedScores.length; i++) {
-  hst.innerHTML
-      += `${'<li >' + '<a id='}${retrievedScores[i].id} href='#' onclick='deleteById(this)'>x</a>${
-      retrievedScores[i].name
-    } -- ${
-      retrievedScores[i].score
-    }</li>`;
-}
- */
+*/
