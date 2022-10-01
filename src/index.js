@@ -3,6 +3,8 @@ import './imgs/enter.png';
 import './imgs/menu.png';
 import './imgs/refresh.png';
 import Task from './constructor.js';
+import addtasklocalstorage from './localstorage.js';
+
 
 document.getElementById('clearall').addEventListener('click', () => {
   localStorage.clear();
@@ -11,6 +13,8 @@ document.getElementById('clearall').addEventListener('click', () => {
 const check = 'checked';
 const uncheck = '';
 const listtask = document.getElementById('listtask');
+
+
 
 class Methods {
   createelement(taskinfo) {
@@ -33,12 +37,12 @@ class Methods {
   resetform =() => {
     document.getElementById('form').reset();
   }
-
   removelist = (text) => {
     if (text.name === 'deletetask') {
-      text.parentEelement.parentEelement.remove();
+      localStorage.setItem('highscores', JSON.stringify(retivetaks));
     }
   }
+
 }
 
 const enter = document.getElementById('enter');
@@ -47,22 +51,20 @@ enter.addEventListener('click', (event) => {
   event.preventDefault();
   const description = document.getElementById('listtext').value;
   const id = 0;
+  if(description === ''){
+    return;
+  }
   const taskinfo = new Task(description, id, false);
   const ui = new Methods();
   ui.createelement(taskinfo);
+  addtasklocalstorage(taskinfo);
 
-  if (localStorage.getItem('tasks') == null) {
-    const tasks = [];
-    tasks.push(taskinfo);
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  } else {
-    const Arr = JSON.parse(localStorage.getItem('tasks')) || [];
-    const counter = Arr.length;
-    const newinfo = new Task(taskinfo.description, counter);
-    Arr.push(newinfo);
-    localStorage.setItem('tasks', JSON.stringify(Arr));
-  }
 });
+
+
+/* const algo = document.getElementsByName('deletetask');
+console.log(algo); */
+
 
 /* const completetoDo = (element) => {
   element.classlist.toggle(check);
@@ -83,4 +85,33 @@ listtask.addEventListener('click', (event) => {
   } else if (elementJob === 'delete') {
     removetoDo(element);
   }
-}); */
+});
+
+const hst = document.getElementById('listtask');
+
+const highScores = [
+  { id: '1', name: 'Maximillian', score: 1000 },
+  { id: '2', name: 'The second guy', score: 700 },
+  { id: '3', name: 'The newbie!', score: 50 },
+];
+
+localStorage.setItem('highscores', JSON.stringify(highScores));
+
+let retrievedScores = JSON.parse(localStorage.getItem('highscores'));
+
+const deleteById = function (self) {
+  retrievedScores = retrievedScores.filter((elem) => elem.id !== self.id);
+
+  localStorage.setItem('highscores', JSON.stringify(retrievedScores));
+  self.parentNode.parentNode.removeChild(self.parentNode);
+};
+
+for (let i = 0; i < retrievedScores.length; i++) {
+  hst.innerHTML
+      += `${'<li >' + '<a id='}${retrievedScores[i].id} href='#' onclick='deleteById(this)'>x</a>${
+      retrievedScores[i].name
+    } -- ${
+      retrievedScores[i].score
+    }</li>`;
+}
+ */
