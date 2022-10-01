@@ -5,24 +5,35 @@ import './imgs/refresh.png';
 import Task from './modules/constructor.js';
 import addtasklocalstorage from './modules/localstorage.js';
 
-const check = 'checked';
-const uncheck = '';
-const listtask = document.getElementById('listtask');
-
-document.getElementById('clearall').addEventListener('click', () => {
+document.getElementById('clear').addEventListener('click', () => {
   localStorage.clear();
 });
 
 document.addEventListener('DOMContentLoaded',(tasks)=>{
-  tasks = JSON.parse(localStorage.getItem('tasks'));
-  tasks.forEach(description=>{
-    const ui = new Methods();
-    ui.createelement(description);
-  })
+  if(localStorage.getItem('tasks') == null){
+    return;
+  }else{
+    tasks = JSON.parse(localStorage.getItem('tasks'));
+    tasks.forEach(description=>{
+      const ui = new Methods();
+      ui.createelement(description);
+    })
+  }
 });
 
+listtask.addEventListener('click',(e)=>{
+
+  if(e.target.name='deletetask'){
+   /*  tasks = localStorage.getItem('tasks'); */
+    const Deleteid = e.target.getAttribute('id');
+    console.log(Deleteid);
+  }
+})
 class Methods {
   createelement(taskinfo) {
+    const check = 'checked';
+    const uncheck = '';
+    const listtask = document.getElementById('listtask');
     const complete = taskinfo.complete ? check : uncheck;
     listtask.style.border = '1px solid #888';
     const text = `
@@ -43,21 +54,21 @@ class Methods {
     document.getElementById('form').reset();
   }
   removelist = (text) => {
-    if (text.name === 'deletetask') {
-    }
   }
-
 }
-
 const enter = document.getElementById('enter');
+let counter ;
 enter.addEventListener('click', (event) => {
   event.preventDefault();
   const description = document.getElementById('listtext').value;
-  const id = 0;
-  if(description === ''){
-    return;
+  if(localStorage.getItem('tasks')== null){
+    counter =0;
+    console.log(counter);
+  }else{
+   counter++;
+   console.log(counter);
   }
-  const taskinfo = new Task(description, id, false);
+  const taskinfo = new Task(description, counter, false);
   const ui = new Methods();
   ui.createelement(taskinfo);
   addtasklocalstorage(taskinfo);
