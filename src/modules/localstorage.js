@@ -2,7 +2,6 @@
 import Task from "./constructor";
 
 export default  function addtasklocalstorage(taskinfo){
-
     if (localStorage.getItem('tasks') == null) {
         const tasks = [];
         tasks.push(taskinfo);

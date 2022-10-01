@@ -2,19 +2,24 @@ import './styles.scss';
 import './imgs/enter.png';
 import './imgs/menu.png';
 import './imgs/refresh.png';
-import Task from './constructor.js';
-import addtasklocalstorage from './localstorage.js';
-
-
-document.getElementById('clearall').addEventListener('click', () => {
-  localStorage.clear();
-});
+import Task from './modules/constructor.js';
+import addtasklocalstorage from './modules/localstorage.js';
 
 const check = 'checked';
 const uncheck = '';
 const listtask = document.getElementById('listtask');
 
+document.getElementById('clearall').addEventListener('click', () => {
+  localStorage.clear();
+});
 
+document.addEventListener('DOMContentLoaded',(tasks)=>{
+  tasks = JSON.parse(localStorage.getItem('tasks'));
+  tasks.forEach(description=>{
+    const ui = new Methods();
+    ui.createelement(description);
+  })
+});
 
 class Methods {
   createelement(taskinfo) {
@@ -39,14 +44,12 @@ class Methods {
   }
   removelist = (text) => {
     if (text.name === 'deletetask') {
-      localStorage.setItem('highscores', JSON.stringify(retivetaks));
     }
   }
 
 }
 
 const enter = document.getElementById('enter');
-
 enter.addEventListener('click', (event) => {
   event.preventDefault();
   const description = document.getElementById('listtext').value;
