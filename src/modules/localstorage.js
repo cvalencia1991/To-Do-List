@@ -1,4 +1,4 @@
-import Task from './constructor';
+import Task from './constructor.js';
 
 export default function addtasklocalstorage(taskinfo) {
   if (localStorage.getItem('tasks') == null) {

@@ -1,4 +1,4 @@
-/* eslint-disable no-restricted-globals */
+/* eslint-disable radix */
 import './styles.scss';
 import './imgs/enter.png';
 import './imgs/menu.png';
@@ -8,25 +8,15 @@ import addtasklocalstorage from './modules/localstorage.js';
 
 document.getElementById('clear').addEventListener('click', () => {
   localStorage.clear();
-  location.reload();
-});
-
-document.addEventListener('DOMContentLoaded', (tasks) => {
-  if (localStorage.getItem('tasks') == null) {
-  } else {
-    tasks = JSON.parse(localStorage.getItem('tasks'));
-    tasks.forEach((description) => {
-      const ui = new Methods();
-      ui.createelement(description);
-    });
-  }
+  window.location.reload();
 });
 
 const listtask = document.getElementById('listtask');
 
 listtask.addEventListener('click', (e) => {
-  if (e.target.name = 'deletetask') {
-    const Deleteid = parseInt(e.target.getAttribute('id'));
+  const edit = e.target.name;
+  if (edit === 'deletetask') {
+    const Deleteid = parseInt(edit.getAttribute('id'));
     const tasks = JSON.parse(localStorage.getItem('tasks'));
     const tasks2 = tasks.filter((task) => task.id !== Deleteid);
     localStorage.setItem('tasks', JSON.stringify(tasks2));
@@ -67,6 +57,18 @@ class Methods {
     document.getElementById('form').reset();
   }
 }
+
+document.addEventListener('DOMContentLoaded', (tasks) => {
+  if (localStorage.getItem('tasks') == null) {
+    // empty
+  } else {
+    tasks = JSON.parse(localStorage.getItem('tasks'));
+    tasks.forEach((description) => {
+      const ui = new Methods();
+      ui.createelement(description);
+    });
+  }
+});
 
 const enter = document.getElementById('enter');
 let counter;
