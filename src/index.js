@@ -31,7 +31,7 @@ class Methods {
     const uncheck = '';
     const listtask = document.getElementById('listtask');
     const tasks4 = JSON.parse(localStorage.getItem('tasks'));
-    if (tasks4 === null) {
+    if (tasks4 === null || tasks4.length === 0) {
       id = 0;
     } else {
       id = tasks4.pop().id + 1;
@@ -75,9 +75,10 @@ enter.addEventListener('click', (event) => {
   event.preventDefault();
   const description = document.getElementById('listtext').value;
   const tasks5 = JSON.parse(localStorage.getItem('tasks'));
-  if (localStorage.getItem('tasks') == null) {
+  if (localStorage.getItem('tasks') === null || tasks5.length === 0) {
     counter = 0;
   } else {
+    console.log(tasks5.length);
     counter = tasks5.pop().id + 1;
   }
   const taskinfo = new Task(description, counter, false);
