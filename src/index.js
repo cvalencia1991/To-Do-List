@@ -24,11 +24,11 @@ listtask.addEventListener('click', (e) => {
   }
 });
 
+const check = 'checked';
+const uncheck = '';
 class Methods {
   createelement(taskinfo) {
     let id;
-    const check = 'checked';
-    const uncheck = '';
     const listtask = document.getElementById('listtask');
     const tasks4 = JSON.parse(localStorage.getItem('tasks'));
     if (tasks4 === null || tasks4.length === 0) {
@@ -41,7 +41,7 @@ class Methods {
     const text = `
             <li class="itemtask" id='list'>
               <div class="stylelistitems">
-                <input id ="tast"  class="checkbox" type="checkbox"  job="complete" aria-label="alfa" ${complete}>
+                <input name="${id}" id ="tast"  class="checkbox" type="checkbox"  job="complete" aria-label="alfa" ${complete}>
                 <p id="edittask">${taskinfo.description}</p>
               </div>
               <div class = "space">
@@ -78,11 +78,25 @@ enter.addEventListener('click', (event) => {
   if (localStorage.getItem('tasks') === null || tasks5.length === 0) {
     counter = 0;
   } else {
-    console.log(tasks5.length);
     counter = tasks5.pop().id + 1;
   }
   const taskinfo = new Task(description, counter, false);
   const ui = new Methods();
   ui.createelement(taskinfo);
   addtasklocalstorage(taskinfo);
+});
+
+listtask.addEventListener('click', (e) => {
+  const currentData = JSON.parse(localStorage.getItem('tasks'));
+  const Deleteid = parseInt(e.target.getAttribute('name'));
+  updateIsTaken(currentData , Deleteid);
+  localStorage.setItem('tasks', JSON.stringify(currentData));
+  function updateIsTaken(equipment, name) {
+    equipment.forEach((item) => {
+      if (item.id === name) {
+        item.completed = !item.completed;
+        console.log(item.completed);
+      }
+    });
+  }
 });
