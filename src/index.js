@@ -8,7 +8,7 @@ import addtasklocalstorage from './modules/localstorage.js';
 
 document.getElementById('clear').addEventListener('click', () => {
   localStorage.clear();
-  window.location.reload();
+  location.reload();
 });
 
 const listtask = document.getElementById('listtask');
@@ -36,16 +36,16 @@ class Methods {
     } else {
       id = tasks4.pop().id + 1;
     }
-    const complete = taskinfo.complete ? check : uncheck;
+    const complete = taskinfo.completed ? check : uncheck;
     listtask.style.border = '1px solid #888';
     const text = `
-            <li class="itemtask" id='list'>
+            <li class="itemtask">
               <div class="stylelistitems">
-                <input name="${id}" id ="tast"  class="checkbox" type="checkbox"  job="complete" aria-label="alfa" ${complete}>
+                <input name="${taskinfo.id}" class="checkbox" type="checkbox"  job="complete" aria-label="alfa" ${complete}>
                 <p id="edittask">${taskinfo.description}</p>
               </div>
               <div class = "space">
-               <img name='deletetask' id="${id}" class="stylelogos" job="delete" src="./imgs/menu.png" alt="">
+               <img name='deletetask' id="${taskinfo.id}" class="stylelogos" job="delete" src="./imgs/menu.png" alt="">
               </div>
             </li>`;
     listtask.insertAdjacentHTML('afterbegin', text);
@@ -59,7 +59,7 @@ class Methods {
 
 document.addEventListener('DOMContentLoaded', (tasks) => {
   if (localStorage.getItem('tasks') == null) {
-    // empty
+   
   } else {
     tasks = JSON.parse(localStorage.getItem('tasks'));
     tasks.forEach((description) => {
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', (tasks) => {
       ui.createelement(description);
     });
   }
-});
+}); 
 
 const enter = document.getElementById('enter');
 let counter;
@@ -86,17 +86,18 @@ enter.addEventListener('click', (event) => {
   addtasklocalstorage(taskinfo);
 });
 
+function updateIsTaken(equipment, name) {
+  equipment.forEach((item) => {
+    if (item.id === name) {
+      item.completed = !item.completed;
+      console.log(item.completed);
+    }
+  });
+}
+
 listtask.addEventListener('click', (e) => {
   const currentData = JSON.parse(localStorage.getItem('tasks'));
   const Deleteid = parseInt(e.target.getAttribute('name'));
-  updateIsTaken(currentData , Deleteid);
+  updateIsTaken(currentData, Deleteid);
   localStorage.setItem('tasks', JSON.stringify(currentData));
-  function updateIsTaken(equipment, name) {
-    equipment.forEach((item) => {
-      if (item.id === name) {
-        item.completed = !item.completed;
-        console.log(item.completed);
-      }
-    });
-  }
 });
