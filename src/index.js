@@ -24,28 +24,21 @@ listtask.addEventListener('click', (e) => {
   }
 });
 
+const check = 'checked';
+const uncheck = '';
 class Methods {
   createelement(taskinfo) {
-    let id;
-    const check = 'checked';
-    const uncheck = '';
     const listtask = document.getElementById('listtask');
-    const tasks4 = JSON.parse(localStorage.getItem('tasks'));
-    if (tasks4 === null || tasks4.length === 0) {
-      id = 0;
-    } else {
-      id = tasks4.pop().id + 1;
-    }
-    const complete = taskinfo.complete ? check : uncheck;
+    const complete = taskinfo.completed ? check : uncheck;
     listtask.style.border = '1px solid #888';
     const text = `
-            <li class="itemtask" id='list'>
+            <li class="itemtask">
               <div class="stylelistitems">
-                <input id ="tast"  class="checkbox" type="checkbox"  job="complete" aria-label="alfa" ${complete}>
+                <input name="${taskinfo.id}" class="checkbox" type="checkbox"  job="complete" aria-label="alfa" ${complete}>
                 <p id="edittask">${taskinfo.description}</p>
               </div>
               <div class = "space">
-               <img name='deletetask' id="${id}" class="stylelogos" job="delete" src="./imgs/menu.png" alt="">
+               <img name='deletetask' id="${taskinfo.id}" class="stylelogos" job="delete" src="./imgs/menu.png" alt="">
               </div>
             </li>`;
     listtask.insertAdjacentHTML('afterbegin', text);
@@ -78,11 +71,36 @@ enter.addEventListener('click', (event) => {
   if (localStorage.getItem('tasks') === null || tasks5.length === 0) {
     counter = 0;
   } else {
-    console.log(tasks5.length);
     counter = tasks5.pop().id + 1;
   }
   const taskinfo = new Task(description, counter, false);
   const ui = new Methods();
   ui.createelement(taskinfo);
   addtasklocalstorage(taskinfo);
+});
+
+const updateIsTaken = (equipment, name) => {
+  equipment.forEach((item) => {
+    if (item.id === name) {
+      item.completed = !item.completed;
+    }
+  });
+};
+
+listtask.addEventListener('click', (e) => {
+  const currentData = JSON.parse(localStorage.getItem('tasks'));
+  const Deleteid = parseInt(e.target.getAttribute('name'));
+  updateIsTaken(currentData, Deleteid);
+  localStorage.setItem('tasks', JSON.stringify(currentData));
+});
+
+const clearallcomplete = document.getElementById('clearall');
+
+clearallcomplete.addEventListener('click', () => {
+  const tasks7 = JSON.parse(localStorage.getItem('tasks'));
+  const tasks8 = tasks7.filter((task) => task.completed !== true);
+  localStorage.setItem('tasks', JSON.stringify(tasks8));
+  const checkbox = document.querySelector('input[job="complete"]:checked');
+  checkbox.parentElement.parentElement.remove();
+  window.location.reload();
 });
