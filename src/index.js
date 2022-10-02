@@ -8,7 +8,7 @@ import addtasklocalstorage from './modules/localstorage.js';
 
 document.getElementById('clear').addEventListener('click', () => {
   localStorage.clear();
-  location.reload();
+  window.location.reload();
 });
 
 const listtask = document.getElementById('listtask');
@@ -28,14 +28,7 @@ const check = 'checked';
 const uncheck = '';
 class Methods {
   createelement(taskinfo) {
-    let id;
     const listtask = document.getElementById('listtask');
-    const tasks4 = JSON.parse(localStorage.getItem('tasks'));
-    if (tasks4 === null || tasks4.length === 0) {
-      id = 0;
-    } else {
-      id = tasks4.pop().id + 1;
-    }
     const complete = taskinfo.completed ? check : uncheck;
     listtask.style.border = '1px solid #888';
     const text = `
@@ -59,7 +52,7 @@ class Methods {
 
 document.addEventListener('DOMContentLoaded', (tasks) => {
   if (localStorage.getItem('tasks') == null) {
-   
+    // empty
   } else {
     tasks = JSON.parse(localStorage.getItem('tasks'));
     tasks.forEach((description) => {
@@ -67,7 +60,7 @@ document.addEventListener('DOMContentLoaded', (tasks) => {
       ui.createelement(description);
     });
   }
-}); 
+});
 
 const enter = document.getElementById('enter');
 let counter;
@@ -86,18 +79,28 @@ enter.addEventListener('click', (event) => {
   addtasklocalstorage(taskinfo);
 });
 
-function updateIsTaken(equipment, name) {
+const updateIsTaken = (equipment, name) => {
   equipment.forEach((item) => {
     if (item.id === name) {
       item.completed = !item.completed;
-      console.log(item.completed);
     }
   });
-}
+};
 
 listtask.addEventListener('click', (e) => {
   const currentData = JSON.parse(localStorage.getItem('tasks'));
   const Deleteid = parseInt(e.target.getAttribute('name'));
   updateIsTaken(currentData, Deleteid);
   localStorage.setItem('tasks', JSON.stringify(currentData));
+});
+
+const clearallcomplete = document.getElementById('clearall');
+
+clearallcomplete.addEventListener('click', () => {
+  const tasks7 = JSON.parse(localStorage.getItem('tasks'));
+  const tasks8 = tasks7.filter((task) => task.completed !== true);
+  localStorage.setItem('tasks', JSON.stringify(tasks8));
+  const checkbox = document.querySelector('input[job="complete"]:checked');
+  checkbox.parentElement.parentElement.remove();
+  window.location.reload();
 });
