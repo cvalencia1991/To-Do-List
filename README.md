@@ -20,12 +20,12 @@ To get a local copy up and running follow these simple example steps.
  - to run it press the next item `npm start`
  - Enjoy :)
 
+# [see live demo](https://cvalencia1991.github.io/To-Do-List/)
 
 ## Built With
 
 - Languages used HTML, CSS, Javascript.
 - Technologies used Github, Git, VSCode.
-
 
 ## Author
 
