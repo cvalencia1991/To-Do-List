@@ -9,12 +9,15 @@ import Methods from './modules/Methods.js';
 
 const ui = new Methods();
 
+const clearallcomplete = document.getElementById('clearall');
+const listtask = document.getElementById('listtask');
+const enter = document.getElementById('enter');
+let counter;
+
 document.getElementById('clear').addEventListener('click', () => {
   localStorage.clear();
   window.location.reload();
 });
-
-const listtask = document.getElementById('listtask');
 
 listtask.addEventListener('click', (e) => {
   if (e.target.name === 'deletetask') {
@@ -38,8 +41,6 @@ document.addEventListener('DOMContentLoaded', (tasks) => {
   }
 });
 
-const enter = document.getElementById('enter');
-let counter;
 enter.addEventListener('click', (event) => {
   event.preventDefault();
   const description = document.getElementById('listtext').value;
@@ -71,8 +72,6 @@ listtask.addEventListener('click', (e) => {
   updateIsTaken(currentData, Deleteid);
   localStorage.setItem('tasks', JSON.stringify(currentData));
 });
-
-const clearallcomplete = document.getElementById('clearall');
 
 clearallcomplete.addEventListener('click', () => {
   const tasks7 = JSON.parse(localStorage.getItem('tasks'));
