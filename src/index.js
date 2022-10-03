@@ -5,6 +5,9 @@ import './imgs/menu.png';
 import './imgs/refresh.png';
 import Task from './modules/constructor.js';
 import addtasklocalstorage from './modules/localstorage.js';
+import Methods from './modules/Methods.js';
+
+const ui = new Methods();
 
 document.getElementById('clear').addEventListener('click', () => {
   localStorage.clear();
@@ -24,39 +27,12 @@ listtask.addEventListener('click', (e) => {
   }
 });
 
-const check = 'checked';
-const uncheck = '';
-class Methods {
-  createelement(taskinfo) {
-    const listtask = document.getElementById('listtask');
-    const complete = taskinfo.completed ? check : uncheck;
-    listtask.style.border = '1px solid #888';
-    const text = `
-            <li class="itemtask">
-              <div class="stylelistitems">
-                <input name="${taskinfo.id}" class="checkbox" type="checkbox"  job="complete" aria-label="alfa" ${complete}>
-                <p id="edittask">${taskinfo.description}</p>
-              </div>
-              <div class = "space">
-               <img name='deletetask' id="${taskinfo.id}" class="stylelogos" job="delete" src="./imgs/menu.png" alt="">
-              </div>
-            </li>`;
-    listtask.insertAdjacentHTML('afterbegin', text);
-    this.resetform();
-  }
-
-  resetform =() => {
-    document.getElementById('form').reset();
-  }
-}
-
 document.addEventListener('DOMContentLoaded', (tasks) => {
   if (localStorage.getItem('tasks') == null) {
     // empty
   } else {
     tasks = JSON.parse(localStorage.getItem('tasks'));
     tasks.forEach((description) => {
-      const ui = new Methods();
       ui.createelement(description);
     });
   }
@@ -67,6 +43,9 @@ let counter;
 enter.addEventListener('click', (event) => {
   event.preventDefault();
   const description = document.getElementById('listtext').value;
+  if (description === '') {
+    return;
+  }
   const tasks5 = JSON.parse(localStorage.getItem('tasks'));
   if (localStorage.getItem('tasks') === null || tasks5.length === 0) {
     counter = 0;
@@ -74,7 +53,6 @@ enter.addEventListener('click', (event) => {
     counter = tasks5.pop().id + 1;
   }
   const taskinfo = new Task(description, counter, false);
-  const ui = new Methods();
   ui.createelement(taskinfo);
   addtasklocalstorage(taskinfo);
 });
