@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "deploy": "gh-pages -d dist",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --co",
     "watch": "webpack --watch",
     "start": "webpack serve --open",
     "build": "webpack --mode production"
@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
+    "@babel/plugin-transform-modules-commonjs": "^7.18.6",
     "babel-eslint": "^10.1.0",
     "css-loader": "^6.7.1",
     "eslint": "^7.32.0",

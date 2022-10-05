@@ -1,9 +1,10 @@
 /* eslint-disable import/prefer-default-export */
-const check = 'checked';
-const uncheck = '';
+
 
 export default class Methods {
   createelement(taskinfo) {
+    const check = 'checked';
+    const uncheck = '';
     const listtask = document.getElementById('listtask');
     const complete = taskinfo.completed ? check : uncheck;
     listtask.style.border = '1px solid #888';
