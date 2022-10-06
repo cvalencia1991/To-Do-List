@@ -1,7 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 
 
-export default class Methods {
+export default  class Methods {
+
   createelement(taskinfo) {
     const check = 'checked';
     const uncheck = '';
@@ -22,7 +23,7 @@ export default class Methods {
     this.resetform();
   }
 
-    resetform =() => {
+  resetform =() => {
       document.getElementById('form').reset();
     }
 }

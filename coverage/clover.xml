@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1665076082047" clover="3.2.0">
+  <project timestamp="1665076082047" name="All files">
+    <metrics statements="13" coveredstatements="13" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2" elements="17" coveredelements="17" complexity="0" loc="13" ncloc="13" packages="1" files="2" classes="2"/>
+    <file name="constructor.js" path="C:\Users\cesarvalencia\Desktop\To-Do-List\src\modules\constructor.js">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <line num="3" count="5" type="stmt"/>
+      <line num="4" count="5" type="stmt"/>
+      <line num="5" count="5" type="stmt"/>
+    </file>
+    <file name="localstorage.js" path="C:\Users\cesarvalencia\Desktop\To-Do-List\src\modules\localstorage.js">
+      <metrics statements="10" coveredstatements="10" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <line num="4" count="3" type="cond" truecount="2" falsecount="0"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="7" count="1" type="stmt"/>
+      <line num="9" count="2" type="stmt"/>
+      <line num="10" count="2" type="stmt"/>
+      <line num="11" count="2" type="stmt"/>
+      <line num="12" count="2" type="stmt"/>
+      <line num="13" count="2" type="stmt"/>
+      <line num="15" count="3" type="stmt"/>
+    </file>
+  </project>
+</coverage>

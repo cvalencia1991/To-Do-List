@@ -11,15 +11,16 @@ const ui = new Methods();
 
 const clearallcomplete = document.getElementById('clearall');
 const listtask = document.getElementById('listtask');
+const resetTodo = document.getElementById('clear');
 const enter = document.getElementById('enter');
 let counter;
 
-document.getElementById('clear').addEventListener('click', () => {
+resetTodo.addEventListener('click', () => {
   localStorage.clear();
   window.location.reload();
 });
 
-listtask.addEventListener('click', (e) => {
+let deletetask = (e) =>{
   if (e.target.name === 'deletetask') {
     const Deleteid = parseInt(e.target.getAttribute('id'));
     const tasks = JSON.parse(localStorage.getItem('tasks'));
@@ -28,9 +29,12 @@ listtask.addEventListener('click', (e) => {
     const element = document.getElementById(`${Deleteid}`);
     element.parentElement.parentElement.remove();
   }
-});
+}
 
-document.addEventListener('DOMContentLoaded', (tasks) => {
+listtask.addEventListener('click', deletetask);
+
+let reloadcontent = (tasks) =>{
+
   if (localStorage.getItem('tasks') == null) {
     // empty
   } else {
@@ -39,7 +43,10 @@ document.addEventListener('DOMContentLoaded', (tasks) => {
       ui.createelement(description);
     });
   }
-});
+
+}
+
+document.addEventListener('DOMContentLoaded', reloadcontent);
 
 enter.addEventListener('click', (event) => {
   event.preventDefault();
@@ -53,7 +60,7 @@ enter.addEventListener('click', (event) => {
   } else {
     counter = tasks5.pop().id + 1;
   }
-  const taskinfo = new Task(description, counter, false);
+  const taskinfo = new Task(description, counter);
   ui.createelement(taskinfo);
   addtasklocalstorage(taskinfo);
 });

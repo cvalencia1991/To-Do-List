@@ -6,10 +6,13 @@ export default function addtasklocalstorage(taskinfo) {
     tasks.push(taskinfo);
     localStorage.setItem('tasks', JSON.stringify(tasks));
   } else {
-    const Arr = JSON.parse(localStorage.getItem('tasks')) || [];
+    const Arr = JSON.parse(localStorage.getItem('tasks'));
     const counter = Arr.length;
     const newinfo = new Task(taskinfo.description, counter);
     Arr.push(newinfo);
     localStorage.setItem('tasks', JSON.stringify(Arr));
   }
+  return JSON.parse(localStorage.getItem('tasks')).length
 }
+
+
