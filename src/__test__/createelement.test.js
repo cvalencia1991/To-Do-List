@@ -1,8 +1,7 @@
 /** * @jest-environment jsdom */
-/* import Methods from "./src/modules/Methods"; */
+import Methods from "../modules/Methods";
 import addtasklocalstorage from "../modules/localstorage";
 import Task from '../modules/constructor';
-window.localStorage = Storage.prototype;
 
 describe('add information in localstorage corretly ', () => {
 
@@ -23,6 +22,21 @@ describe('add information in localstorage corretly ', () => {
 
 });
 
-describe('add information in localstorage corretly ', () => {
+describe('Testing Add element in form list', () => {
+
+
+    test('if list is not empty', () => {
+        const methods = new Methods()
+        const obj1 = new Task('test 1', 1,false);
+        const obj2 = new Task('test 2',2,true);
+        document.body.innerHTML =
+            '<div id="listtask">' +
+            ' <ul id="list"><li></li></ul>' +
+            '</div>' + '<div id="listtext"></div>';
+        methods.createelement(obj1);
+        methods.createelement(obj2);
+        const list = document.querySelectorAll('#list li');
+        expect(list).toHaveLength(1);
+     });
 
 });

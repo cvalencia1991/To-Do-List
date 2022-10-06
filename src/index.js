@@ -60,7 +60,7 @@ enter.addEventListener('click', (event) => {
   } else {
     counter = tasks5.pop().id + 1;
   }
-  const taskinfo = new Task(description, counter);
+  const taskinfo = new Task(description, counter,false);
   ui.createelement(taskinfo);
   addtasklocalstorage(taskinfo);
 });
