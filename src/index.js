@@ -6,8 +6,8 @@ import './imgs/refresh.png';
 import Task from './modules/constructor.js';
 import addtasklocalstorage from './modules/localstorage.js';
 import Methods from './modules/Methods.js';
-import deletetask from './modules/deletetask';
-import clearallsuccess from './modules/clearallsucces';
+import deletetask from './modules/deletetask.js';
+import clearallsuccess from './modules/clearallsucces.js';
 
 const ui = new Methods();
 
@@ -22,11 +22,9 @@ resetTodo.addEventListener('click', () => {
   window.location.reload();
 });
 
-
 listtask.addEventListener('click', deletetask);
 
-let reloadcontent = (tasks) =>{
-
+const reloadcontent = (tasks) => {
   if (localStorage.getItem('tasks') == null) {
     // empty
   } else {
@@ -35,7 +33,7 @@ let reloadcontent = (tasks) =>{
       ui.createelement(description);
     });
   }
-}
+};
 
 document.addEventListener('DOMContentLoaded', reloadcontent);
 
@@ -51,7 +49,7 @@ enter.addEventListener('click', (event) => {
   } else {
     counter = tasks5.pop().id + 1;
   }
-  const taskinfo = new Task(description, counter,false);
+  const taskinfo = new Task(description, counter, false);
   ui.createelement(taskinfo);
   addtasklocalstorage(taskinfo);
 });
@@ -70,7 +68,5 @@ listtask.addEventListener('click', (e) => {
   updateIsTaken(currentData, Deleteid);
   localStorage.setItem('tasks', JSON.stringify(currentData));
 });
-
-
 
 clearallcomplete.addEventListener('click', clearallsuccess);

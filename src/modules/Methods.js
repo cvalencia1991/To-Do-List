@@ -1,14 +1,12 @@
 /* eslint-disable import/prefer-default-export */
 
-
-export default  class Methods {
-
+export default class Methods {
   createelement(taskinfo) {
-   const check = 'checked';
+    const check = 'checked';
     const uncheck = '';
     const listtask = document.getElementById('listtask');
     const complete = taskinfo.completed ? check : uncheck;
-      const text = `
+    const text = `
       <li  class="itemtask">
         <div class="stylelistitems">
           <input name="${taskinfo.id}" class="checkbox" type="checkbox"  job="complete" aria-label="alfa" ${complete}>
@@ -19,12 +17,11 @@ export default  class Methods {
         </div>
       </li>`;
     listtask.insertAdjacentHTML('afterbegin', text);
- this.resetform();
+    this.resetform();
   }
 
 resetform =() => {
-    const reset = document.getElementById('listtext');
-    reset.value = "";
-    return;
-    }
+  const reset = document.getElementById('listtext');
+  reset.value = '';
+}
 }
