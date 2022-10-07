@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Awesome Books: Webpack Setup
+# To Do List: Jest testing
 
 > In this project we worked in pair-programming and created tests with Jest to implement the To Do list Files.  We created tests to check the following functions:
 - Test Add a task function
