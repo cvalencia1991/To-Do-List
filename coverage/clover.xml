@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1665102906310" clover="3.2.0">
-  <project timestamp="1665102906310" name="All files">
+<coverage generated="1665109637416" clover="3.2.0">
+  <project timestamp="1665109637416" name="All files">
     <metrics statements="29" coveredstatements="29" conditionals="4" coveredconditionals="4" methods="6" coveredmethods="6" elements="39" coveredelements="39" complexity="0" loc="29" ncloc="29" packages="1" files="4" classes="4"/>
     <file name="Methods.js" path="C:\Users\cesarvalencia\Desktop\To-Do-List\src\modules\Methods.js">
       <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
