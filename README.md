@@ -2,7 +2,12 @@
 
 # Awesome Books: Webpack Setup
 
-> In this project i crete the Test with Jest to implement the  To Do list Files
+> In this project we worked in pair-programming and created tests with Jest to implement the To Do list Files.  We created tests to check the following functions:
+- Test Add a task function
+- Test Delete a task function
+- Test Update a task function
+- Test the local storage function when mark a task as completed
+- Test the clear all completed function
 
 
 ## Getting Started
@@ -10,7 +15,7 @@
 if you want this project, follow the next intruccions:
 To get a local copy up and running follow these simple example steps.
 
- - go to the code the repository Awesome Book
+ - Go to the code the repository To Do List
  - Use Git to clone the repository on the site you want to put
  - Install the next npm items in the file to run it
     - `npm install --save-dev identity-obj-proxy`
@@ -19,7 +24,7 @@ To get a local copy up and running follow these simple example steps.
     -`npm install @hint/hint-no-inline-styles --save-dev`
     - `npm install --save-dev jest-json-schema`
 
- - to run it press the next item `npm run test`
+ - To run it press the next item `npm run test`
  - Enjoy :)
 
 # [see live demo](https://cvalencia1991.github.io/To-Do-List/)
@@ -48,7 +53,7 @@ To get a local copy up and running follow these simple example steps.
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/cvalencia1991/Awesome-Books-ES6/issues).
+Feel free to check the [issues page](https://github.com/cvalencia1991/To-Do-List/issues).
 
 ## Show your support
 
