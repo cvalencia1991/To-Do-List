@@ -20,7 +20,11 @@
   },
   "jest": {
     "testEnvironment": "jsdom",
-    "verbose": true
+    "verbose": true,
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "./modules/__mocks__/index.js",
+      "\\.(css|less)$": "identity-obj-proxy"
+    }
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",

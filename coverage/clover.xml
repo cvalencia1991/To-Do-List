@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1665090911149" clover="3.2.0">
-  <project timestamp="1665090911149" name="All files">
-    <metrics statements="24" coveredstatements="24" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4" elements="32" coveredelements="32" complexity="0" loc="24" ncloc="24" packages="1" files="3" classes="3"/>
+<coverage generated="1665102906310" clover="3.2.0">
+  <project timestamp="1665102906310" name="All files">
+    <metrics statements="29" coveredstatements="29" conditionals="4" coveredconditionals="4" methods="6" coveredmethods="6" elements="39" coveredelements="39" complexity="0" loc="29" ncloc="29" packages="1" files="4" classes="4"/>
     <file name="Methods.js" path="C:\Users\cesarvalencia\Desktop\To-Do-List\src\modules\Methods.js">
       <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
       <line num="7" count="2" type="stmt"/>
@@ -15,6 +15,14 @@
       <line num="26" count="2" type="stmt"/>
       <line num="27" count="2" type="stmt"/>
       <line num="28" count="2" type="stmt"/>
+    </file>
+    <file name="clearallsucces.js" path="C:\Users\cesarvalencia\Desktop\To-Do-List\src\modules\clearallsucces.js">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="3" count="3" type="stmt"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="6" count="1" type="stmt"/>
     </file>
     <file name="constructor.js" path="C:\Users\cesarvalencia\Desktop\To-Do-List\src\modules\constructor.js">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>

@@ -2,6 +2,7 @@
 import Methods from "../modules/Methods";
 import addtasklocalstorage from "../modules/localstorage";
 import Task from '../modules/constructor';
+import clearallsuccess from "../modules/clearallsucces";
 
 describe('add information in localstorage corretly ', () => {
 
@@ -22,8 +23,7 @@ describe('add information in localstorage corretly ', () => {
 
 });
 
-describe('Testing Add element in form list', () => {
-
+describe('Testing Add and delete element in form list', () => {
 
     test('if list is not empty', () => {
         const methods = new Methods()
@@ -40,3 +40,18 @@ describe('Testing Add element in form list', () => {
      });
 
 });
+
+
+describe('Checkbox', () => {
+    test('Expect to change completed to tru after click', () => {
+      const checkBox = document.querySelector('.checkbox');
+      checkBox.clearallsuccess();
+      const locStorage = localStorage.getItem('tasks');
+      expect(locStorage).toEqual(JSON.stringify([{
+        index: 1,
+        description: 'Hello',
+        completed: true,
+      }]));
+    });
+  });
+  
