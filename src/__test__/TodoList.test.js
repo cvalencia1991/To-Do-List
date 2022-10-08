@@ -77,7 +77,3 @@ describe('check clear all succes', () => {
     expect(list).toHaveLength(3);
   });
 });
-
-describe('check Editing task description', () => {
-
-});
