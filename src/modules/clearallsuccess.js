@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-expressions */
+
 export default function clearallsuccess() {
   const tasks7 = JSON.parse(localStorage.getItem('tasks'));
   const tasks8 = tasks7.filter((task) => task.completed !== true);
@@ -12,4 +13,5 @@ export default function clearallsuccess() {
   }
   const b = 0;
   (a === 'on') ? checkbox.parentElement.parentElement.remove() : b;
+  window.location.reload();
 }

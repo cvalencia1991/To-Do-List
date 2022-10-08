@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable class-methods-use-this */
 
 export default class Methods {
@@ -17,11 +18,11 @@ export default class Methods {
         </div>
       </li>`;
     listtask.insertAdjacentHTML('afterbegin', text);
-    /*  this.resetform(); */
+    this.resetform();
   }
 
-  /*  resetform =() => {
+  resetform =() => {
     const reset = document.getElementById('listtext');
-    reset.value = '';
-  } */
+    (reset === null) ? '' : (reset.value = '');
+  }
 }

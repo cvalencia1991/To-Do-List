@@ -35,6 +35,19 @@ describe('Testing Add and delete element in form list', () => {
 });
 
 describe('check clear all succes', () => {
+  const original = window.location;
+
+  beforeAll(() => {
+    Object.defineProperty(window, 'location', {
+      configurable: true,
+      value: { reload: jest.fn() },
+    });
+  });
+
+  afterAll(() => {
+    Object.defineProperty(window, 'location', { configurable: true, value: original });
+  });
+
   test('Expect to change completed to tru after click', () => {
     const methods = new Methods();
     const obj1 = new Task('test 1', 1, false);
@@ -55,7 +68,8 @@ describe('check clear all succes', () => {
     const obj1 = new Task('test 1', 1, false);
     const obj2 = new Task('test 1', 1, false);
     const obj3 = new Task('test 1', 1, false);
-    document.body.innerHTML = '<ul id="listtask">'
+    document.body.innerHTML = '<input id="listtext" value="hola" name="listtext" type="text" placeholder="Add your task here">'
+    + '<ul id="listtask">'
             + '</ul>';
     methods.createelement(obj1);
     methods.createelement(obj2);
