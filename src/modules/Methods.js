@@ -11,7 +11,7 @@ export default class Methods {
       <li  class="itemtask">
         <div class="stylelistitems">
           <input name="${taskinfo.id}" class="checkbox" type="checkbox"  job="complete" aria-label="alfa" ${complete}>
-          <p id="edittask">${taskinfo.description}</p>
+          <input type='text' value='${taskinfo.description}' id="edittask">
         </div>
         <div class = "space">
          <img name='deletetask' id="${taskinfo.id}" class="stylelogos" job="delete" src="./imgs/menu.png" alt="">

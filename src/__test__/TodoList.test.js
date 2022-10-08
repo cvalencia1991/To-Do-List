@@ -36,7 +36,7 @@ describe('Testing Add and delete element in form list', () => {
 
 describe('check clear all succes', () => {
   const original = window.location;
-
+  const methods = new Methods();
   beforeAll(() => {
     Object.defineProperty(window, 'location', {
       configurable: true,
@@ -48,8 +48,7 @@ describe('check clear all succes', () => {
     Object.defineProperty(window, 'location', { configurable: true, value: original });
   });
 
-  test('Expect to change completed to tru after click', () => {
-    const methods = new Methods();
+  test('Expect to change completed to true after click', () => {
     const obj1 = new Task('test 1', 1, false);
     const obj2 = new Task('test 1', 1, false);
     const obj3 = new Task('test 1', 1, true);
@@ -64,13 +63,12 @@ describe('check clear all succes', () => {
   });
 
   test('when the checkbox are unchecked', () => {
-    const methods = new Methods();
     const obj1 = new Task('test 1', 1, false);
     const obj2 = new Task('test 1', 1, false);
     const obj3 = new Task('test 1', 1, false);
     document.body.innerHTML = '<input id="listtext" value="hola" name="listtext" type="text" placeholder="Add your task here">'
     + '<ul id="listtask">'
-            + '</ul>';
+    + '</ul>';
     methods.createelement(obj1);
     methods.createelement(obj2);
     methods.createelement(obj3);
@@ -78,4 +76,8 @@ describe('check clear all succes', () => {
     const list = document.querySelectorAll('#listtask li');
     expect(list).toHaveLength(3);
   });
+});
+
+describe('check Editing task description', () => {
+
 });

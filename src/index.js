@@ -70,10 +70,3 @@ listtask.addEventListener('click', (e) => {
 });
 
 clearallcomplete.addEventListener('click', clearallsuccess);
-
-listtask.addEventListener('click', (e) => {
-  const edittext = e.target;
-  const currentData = JSON.parse(localStorage.getItem('tasks'));
-  updateIsTaken(currentData, edittext);
-  localStorage.setItem('tasks', JSON.stringify(currentData));
-});
