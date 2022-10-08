@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1665194694907" clover="3.2.0">
+  <project timestamp="1665194694908" name="All files">
+    <metrics statements="33" coveredstatements="33" conditionals="10" coveredconditionals="10" methods="6" coveredmethods="6" elements="49" coveredelements="49" complexity="0" loc="33" ncloc="33" packages="1" files="4" classes="4"/>
+    <file name="Methods.js" path="C:\Users\cesarvalencia\Desktop\To-Do-List\src\modules\Methods.js">
+      <metrics statements="10" coveredstatements="10" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+      <line num="6" count="7" type="stmt"/>
+      <line num="7" count="7" type="stmt"/>
+      <line num="8" count="7" type="stmt"/>
+      <line num="9" count="7" type="cond" truecount="2" falsecount="0"/>
+      <line num="10" count="7" type="stmt"/>
+      <line num="20" count="7" type="stmt"/>
+      <line num="21" count="7" type="stmt"/>
+      <line num="24" count="3" type="stmt"/>
+      <line num="25" count="7" type="stmt"/>
+      <line num="26" count="7" type="cond" truecount="2" falsecount="0"/>
+    </file>
+    <file name="clearallsuccess.js" path="C:\Users\cesarvalencia\Desktop\To-Do-List\src\modules\clearallsuccess.js">
+      <metrics statements="10" coveredstatements="10" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+      <line num="4" count="2" type="stmt"/>
+      <line num="5" count="6" type="stmt"/>
+      <line num="6" count="2" type="stmt"/>
+      <line num="7" count="2" type="stmt"/>
+      <line num="9" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="12" count="1" type="stmt"/>
+      <line num="14" count="2" type="stmt"/>
+      <line num="15" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="16" count="2" type="stmt"/>
+    </file>
+    <file name="constructor.js" path="C:\Users\cesarvalencia\Desktop\To-Do-List\src\modules\constructor.js">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <line num="3" count="12" type="stmt"/>
+      <line num="4" count="12" type="stmt"/>
+      <line num="5" count="12" type="stmt"/>
+    </file>
+    <file name="localstorage.js" path="C:\Users\cesarvalencia\Desktop\To-Do-List\src\modules\localstorage.js">
+      <metrics statements="10" coveredstatements="10" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <line num="4" count="3" type="cond" truecount="2" falsecount="0"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="7" count="1" type="stmt"/>
+      <line num="9" count="2" type="stmt"/>
+      <line num="10" count="2" type="stmt"/>
+      <line num="11" count="2" type="stmt"/>
+      <line num="12" count="2" type="stmt"/>
+      <line num="13" count="2" type="stmt"/>
+      <line num="15" count="3" type="stmt"/>
+    </file>
+  </project>
+</coverage>

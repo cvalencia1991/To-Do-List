@@ -6,31 +6,25 @@ import './imgs/refresh.png';
 import Task from './modules/constructor.js';
 import addtasklocalstorage from './modules/localstorage.js';
 import Methods from './modules/Methods.js';
+import deletetask from './modules/deletetask.js';
+import clearallsuccess from './modules/clearallsuccess.js';
 
 const ui = new Methods();
 
 const clearallcomplete = document.getElementById('clearall');
 const listtask = document.getElementById('listtask');
+const resetTodo = document.getElementById('clear');
 const enter = document.getElementById('enter');
 let counter;
 
-document.getElementById('clear').addEventListener('click', () => {
+resetTodo.addEventListener('click', () => {
   localStorage.clear();
   window.location.reload();
 });
 
-listtask.addEventListener('click', (e) => {
-  if (e.target.name === 'deletetask') {
-    const Deleteid = parseInt(e.target.getAttribute('id'));
-    const tasks = JSON.parse(localStorage.getItem('tasks'));
-    const tasks2 = tasks.filter((task) => task.id !== Deleteid);
-    localStorage.setItem('tasks', JSON.stringify(tasks2));
-    const element = document.getElementById(`${Deleteid}`);
-    element.parentElement.parentElement.remove();
-  }
-});
+listtask.addEventListener('click', deletetask);
 
-document.addEventListener('DOMContentLoaded', (tasks) => {
+const reloadcontent = (tasks) => {
   if (localStorage.getItem('tasks') == null) {
     // empty
   } else {
@@ -39,7 +33,9 @@ document.addEventListener('DOMContentLoaded', (tasks) => {
       ui.createelement(description);
     });
   }
-});
+};
+
+document.addEventListener('DOMContentLoaded', reloadcontent);
 
 enter.addEventListener('click', (event) => {
   event.preventDefault();
@@ -73,11 +69,4 @@ listtask.addEventListener('click', (e) => {
   localStorage.setItem('tasks', JSON.stringify(currentData));
 });
 
-clearallcomplete.addEventListener('click', () => {
-  const tasks7 = JSON.parse(localStorage.getItem('tasks'));
-  const tasks8 = tasks7.filter((task) => task.completed !== true);
-  localStorage.setItem('tasks', JSON.stringify(tasks8));
-  const checkbox = document.querySelector('input[job="complete"]:checked');
-  checkbox.parentElement.parentElement.remove();
-  window.location.reload();
-});
+clearallcomplete.addEventListener('click', clearallsuccess);
