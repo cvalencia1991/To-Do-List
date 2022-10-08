@@ -7,7 +7,7 @@ import Task from './modules/constructor.js';
 import addtasklocalstorage from './modules/localstorage.js';
 import Methods from './modules/Methods.js';
 import deletetask from './modules/deletetask.js';
-import clearallsuccess from './modules/clearallsucces.js';
+import clearallsuccess from './modules/clearallsuccess.js';
 
 const ui = new Methods();
 
@@ -70,3 +70,10 @@ listtask.addEventListener('click', (e) => {
 });
 
 clearallcomplete.addEventListener('click', clearallsuccess);
+
+listtask.addEventListener('click', (e) => {
+  const edittext = e.target;
+  const currentData = JSON.parse(localStorage.getItem('tasks'));
+  updateIsTaken(currentData, edittext);
+  localStorage.setItem('tasks', JSON.stringify(currentData));
+});

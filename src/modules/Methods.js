@@ -1,4 +1,4 @@
-/* eslint-disable import/prefer-default-export */
+/* eslint-disable class-methods-use-this */
 
 export default class Methods {
   createelement(taskinfo) {
@@ -17,11 +17,11 @@ export default class Methods {
         </div>
       </li>`;
     listtask.insertAdjacentHTML('afterbegin', text);
-    this.resetform();
+    /*  this.resetform(); */
   }
 
-resetform =() => {
-  const reset = document.getElementById('listtext');
-  reset.value = '';
-}
+  /*  resetform =() => {
+    const reset = document.getElementById('listtext');
+    reset.value = '';
+  } */
 }
