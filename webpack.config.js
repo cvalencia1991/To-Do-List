@@ -13,14 +13,6 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        removeScriptTypeAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        useShortDoctype: true,
-      },
     }),
     new MiniCssExtractPlugin({
       filename: 'main.css',
@@ -43,7 +35,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: 'imgs/',
+              outputPath: './src/imgs',
               useRelativePath: true,
             },
           },
