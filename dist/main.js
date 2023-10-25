@@ -1,1 +1,26 @@
-"use strict";(self.webpackChunktodolist=self.webpackChunktodolist||[]).push([[179],{881:(e,t,l)=>{l.p,l.p,l.p;class s{constructor(e,t,l){this.description=e,this.id=t,this.completed=l}}const a=new class{createelement(e){const t=document.getElementById("listtask"),l=e.completed?"checked":"",s=`\n      <li  class="itemtask">\n        <div class="stylelistitems">\n          <input name="${e.id}" class="checkbox" type="checkbox"  job="complete" aria-label="alfa" ${l}>\n          <input type='text' value='${e.description}' id="edittask">\n        </div>\n        <div class = "space">\n         <img name='deletetask' id="${e.id}" class="stylelogos" job="delete" src="./imgs/menu.png" alt="">\n        </div>\n      </li>`;t.insertAdjacentHTML("afterbegin",s),this.resetform()}resetform=()=>{const e=document.getElementById("listtext");null!==e&&(e.value="")}},n=document.getElementById("clearall"),o=document.getElementById("listtask"),c=document.getElementById("clear"),r=document.getElementById("enter");let i;c.addEventListener("click",(()=>{localStorage.clear(),window.location.reload()})),o.addEventListener("click",(function(e){if("deletetask"===e.target.name){const t=parseInt(e.target.getAttribute("id")),l=JSON.parse(localStorage.getItem("tasks")).filter((e=>e.id!==t));localStorage.setItem("tasks",JSON.stringify(l)),document.getElementById(`${t}`).parentElement.parentElement.remove()}})),document.addEventListener("DOMContentLoaded",(e=>{null==localStorage.getItem("tasks")||JSON.parse(localStorage.getItem("tasks")).forEach((e=>{a.createelement(e)}))})),r.addEventListener("click",(e=>{e.preventDefault();const t=document.getElementById("listtext").value;if(""===t)return;const l=JSON.parse(localStorage.getItem("tasks"));i=null===localStorage.getItem("tasks")||0===l.length?0:l.pop().id+1;const n=new s(t,i,!1);a.createelement(n),function(e){if(null==localStorage.getItem("tasks")){const t=[];t.push(e),localStorage.setItem("tasks",JSON.stringify(t))}else{const t=JSON.parse(localStorage.getItem("tasks")),l=t.length,a=new s(e.description,l,!1);t.push(a),localStorage.setItem("tasks",JSON.stringify(t))}JSON.parse(localStorage.getItem("tasks")).length}(n)})),o.addEventListener("click",(e=>{const t=JSON.parse(localStorage.getItem("tasks")),l=parseInt(e.target.getAttribute("name"));var s;s=l,t.forEach((e=>{e.id===s&&(e.completed=!e.completed)})),localStorage.setItem("tasks",JSON.stringify(t))})),n.addEventListener("click",(function(){const e=JSON.parse(localStorage.getItem("tasks")).filter((e=>!0!==e.completed));localStorage.setItem("tasks",JSON.stringify(e));const t=document.querySelector('input[job="complete"]:checked');let l;l=null===t?null:t.value,"on"===l&&t.parentElement.parentElement.remove(),window.location.reload()}))}},e=>{e(e.s=881)}]);
+/*
+ * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+(self["webpackChunktodolist"] = self["webpackChunktodolist"] || []).push([["main"],{
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/***/ (() => {
+
+eval("\n\n//# sourceURL=webpack://todolist/./src/index.js?");
+
+/***/ })
+
+},
+/******/ __webpack_require__ => { // webpackRuntimeModules
+/******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
+/******/ var __webpack_exports__ = (__webpack_exec__("./src/index.js"));
+/******/ }
+]);
