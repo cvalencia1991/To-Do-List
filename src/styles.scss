@@ -1,25 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
 
+$primary-color: #000;
+$secondary-color: #fff;
+
+
 html{
   font-family: 'Tilt Neon', sans-serif;
+  background: linear-gradient(to left top, rgba(2,0,36,1) 0%, rgb(57, 57, 149) 35%, rgba(0,212,255,1) 100%);
 }
 
 
   .container{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: space-around;
     height: 100vh;
+    justify-content: center;
 
 
     .TodoContainer{
-      display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
       border: 2px solid #000;
       border-radius: 0.2rem;
+      background: $secondary-color;
 
     .title{
       display: flex;
@@ -39,34 +42,34 @@ html{
     #clearall{
       font-size: 0.8rem;
       font-weight: 400;
-      color: #fff;
+      color: $secondary-color;
       width: 100%;
-      background: #000;
+      background: $primary-color;
       border: none;
       padding: 0.5rem 1rem;
       cursor: pointer;
       transition: all 0.3s ease-in-out;
 
       &:hover{
-        background: #fff;
-        color: #000;
+        background: $secondary-color;
+        color: $primary-color;
       }
     }
     #submit{
       font-size: 0.8rem;
       font-weight: 400;
-      color: #fff;
-      background: #000;
+      color: $secondary-color;
+      background: $primary-color;
       border: none;
-      height: 100%;
       padding: 0.5rem 1rem;
       cursor: pointer;
       justify-content: space-around;
       transition: all 0.3s ease-in-out;
+      height: 2.7em;
 
       &:hover{
-        background: #fff;
-        color: #000;
+        background: $secondary-color;
+        color: $primary-color;
       }
     }
 
@@ -86,9 +89,8 @@ html{
         padding: 0.5rem 1rem;
         border: none;
         border-radius: 0.2rem;
-        margin-right: 1rem;
       }
-      
+
     }
     }
 
