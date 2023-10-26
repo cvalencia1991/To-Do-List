@@ -5,6 +5,10 @@ class Task {
     this.description = description;
     this.status = status;
   }
+
+  addTask() {
+    console.log('addTask', this);
+  }
 }
 
 export default Task;

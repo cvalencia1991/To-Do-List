@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
+
+html{
+  font-family: 'Tilt Neon', sans-serif;
+}
+
+
+  .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 100vh;
+
+
+    .TodoContainer{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #000;
+      border-radius: 0.2rem;
+
+    .title{
+      display: flex;
+      text-align: center;
+      align-items: center;
+      justify-content: space-around;
+      border-bottom: 2px solid #000;
+      width: 100%;
+
+      h1{
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin: 0.5rem 0;
+      }
+    }
+
+    #clearall{
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: #fff;
+      width: 100%;
+      background: #000;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+
+      &:hover{
+        background: #fff;
+        color: #000;
+      }
+    }
+    #submit{
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: #fff;
+      background: #000;
+      border: none;
+      height: 100%;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      justify-content: space-around;
+      transition: all 0.3s ease-in-out;
+
+      &:hover{
+        background: #fff;
+        color: #000;
+      }
+    }
+
+    form{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+      width: 100%;
+      border-bottom: 2px solid;
+
+      #toDoText {
+        width: 100%;
+        font-size: 1rem;
+        font-weight: 400;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 0.2rem;
+        margin-right: 1rem;
+      }
+      
+    }
+    }
+
+  }
+
+
+
+
+

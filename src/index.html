@@ -7,16 +7,19 @@
     <title>To do list</title>
 </head>
     <body>
-        <div class="todo">
+        <div class="container">
+            <div class="TodoContainer">
             <div class="title">
-                <h1>To do list</h1>
+                <h1>Cesar's To do list</h1>
+                <i class="fa-solid fa-rotate-right"></i>
             </div>
             <form id="form" action="">
-                <input id="listtext" name="listtext" type="text" placeholder="Add your task here">
-                <button type="submit" id="enter" input="submit"  aria-label="s" ><i class="fa-solid fa-pencil"></i></button>
+                <input id="toDoText" name="listtext" type="text" placeholder="Add a todo here...">
+                <button type="submit" id="submit" input="submit"  aria-label="submit Task" ><i class="fa-solid fa-pencil"></i></button>
             </form>
             <ul id="listtask"></ul>
         <button id="clearall" input="buton">Clear All Completed</button>
+        </div>
         <div>
         <script src="https://kit.fontawesome.com/4fc928bb3c.js" crossorigin="anonymous"></script>
     </body>
